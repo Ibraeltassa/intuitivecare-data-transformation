@@ -29,7 +29,11 @@ public class CsvExporter {
                     // Constrói uma linha CSV separando por vírgula
                     StringBuilder linhaCsv = new StringBuilder();
                     for (int j = 0; j < linha.size(); j++) {
-                        linhaCsv.append(linha.get(j).getText());
+                        String texto = linha.get(j).getText()
+                                .replace("OD", "Odontologia")
+                                .replace("AMB", "Ambulatorial");
+
+                        linhaCsv.append(texto);
 
                         // Adiciona vírgula entre as colunas (exceto na última)
                         if (j < linha.size() - 1) {
@@ -51,4 +55,5 @@ public class CsvExporter {
             System.err.println("Erro ao escrever o CSV: " + e.getMessage());
         }
     }
+
 }
